@@ -28,7 +28,7 @@ func main() {
 	authController := controller.NewAuthController(&authService, authRepository, configuration)
 	productController := controller.NewProductController(&productService, productRepository, authRepository, configuration)
 
-	gin.SetMode(gin.ReleaseMode)
+	gin.SetMode(gin.DebugMode)
 	app := gin.Default()
 	app.Static("/storage", "./storage")
 	app.Use(gin.CustomRecovery(exception.ErrorHandler))

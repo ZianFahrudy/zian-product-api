@@ -29,7 +29,7 @@ func main() {
 	productController := controller.NewProductController(&productService, productRepository, authRepository, configuration)
 
 	gin.SetMode(gin.ReleaseMode)
-	app := gin.New()
+	app := gin.Default()
 	app.Static("/storage", "./storage")
 	app.Use(gin.CustomRecovery(exception.ErrorHandler))
 	app.Use(middleware.CORSMiddleware())
@@ -39,6 +39,6 @@ func main() {
 	productController.Route(app)
 
 	// start app
-	err := app.Run(":9090")
-	exception.PanicIfNeeded(err)
+	app.Run(":9090")
+	// exception.PanicIfNeeded(err)
 }

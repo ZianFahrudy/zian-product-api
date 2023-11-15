@@ -39,6 +39,6 @@ func main() {
 	productController.Route(app)
 
 	// start app
-	err := app.Run("9090")
+	err := app.Run(":9090")
 	exception.PanicIfNeeded(err)
 }
